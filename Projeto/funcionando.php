@@ -131,7 +131,6 @@ function exibirMenu()
     }
 }
 
-// Função principal
 function main()
 {
     global $usuario_logado;
