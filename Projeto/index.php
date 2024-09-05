@@ -3,7 +3,9 @@
 $usuario1 = 'a';
 $senha1 = '123';
 $totalVendas = 0;
-
+$usuarios = [
+    'admin' => 123
+];
 
 function registrarLog($mensagem)
 {
@@ -28,15 +30,16 @@ function limparTela()
 
 function login()
 {
-    global $usuario1, $senha1, $logado;
+    global $usuario1, $senha1, $logado, $usuarios;
     $usuario = readline("Digite seu usuario: ");
     $senha = readline("Digite sua senha: ");
 
-    if ($usuario == $usuario1 && $senha == $senha1) {
-        echo 'Bem vindo 3
-        ';
-        registrarLog("Usuário Fez login");
-        $logado = true;
+    if (array_key_exists($usuario, $usuarios)) {
+        if ($senha == $usuarios[$usuario]) {
+            echo 'Bem vindo 3';
+            registrarLog("Usuário Fez login");
+            $logado = true;
+        }
     } else if ($usuario == '' || $senha == '') {
         $logado = false;
         echo 'Preencha os campos';
